@@ -1,0 +1,542 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Kalam:wght@300;400;700&family=Bebas+Neue&family=Russo+One&family=Black+Ops+One&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', 'SF Pro Display', sans-serif;
+  --font-display: 'SF Pro Display', 'Inter', sans-serif;
+  --font-graffiti: 'Permanent Marker', cursive;
+  --font-street: 'Black Ops One', cursive;
+  --font-urban: 'Russo One', sans-serif;
+  --font-tag: 'Bebas Neue', cursive;
+  --font-hand: 'Kalam', cursive;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Code", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+  /* Graffiti color scheme */
+  --graffiti-red: 220, 38, 127;
+  --graffiti-blue: 59, 130, 246;
+  --graffiti-yellow: 251, 191, 36;
+  --graffiti-green: 34, 197, 94;
+  --graffiti-purple: 147, 51, 234;
+  --graffiti-orange: 251, 146, 60;
+  --graffiti-pink: 236, 72, 153;
+  --graffiti-cyan: 34, 211, 238;
+
+  /* Modern color scheme */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground font-sans;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* Text selection styling */
+::selection {
+  @apply bg-slate-900/10;
+}
+
+/* Focus visible styling for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-slate-900;
+}
+
+/* Modern animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  animation: gradient-shift 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* Hover effects */
+.hover-lift {
+  @apply transition-all duration-300 ease-out;
+}
+
+.hover-lift:hover {
+  @apply transform -translate-y-1 shadow-lg;
+}
+
+.hover-scale {
+  @apply transition-transform duration-300 ease-out;
+}
+
+.hover-scale:hover {
+  @apply transform scale-105;
+}
+
+/* Glass morphism effects */
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typography improvements */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Improved button styles */
+.btn-modern {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium;
+  @apply transition-all duration-200 ease-in-out;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-primary {
+  @apply btn-modern bg-slate-900 text-white hover:bg-slate-800;
+  @apply focus:ring-slate-900;
+}
+
+.btn-secondary {
+  @apply btn-modern bg-slate-100 text-slate-900 hover:bg-slate-200;
+  @apply focus:ring-slate-500;
+}
+
+.btn-outline {
+  @apply btn-modern border border-slate-300 bg-transparent text-slate-700;
+  @apply hover:bg-slate-50 focus:ring-slate-500;
+}
+
+/* Card improvements */
+.card-modern {
+  @apply bg-white rounded-xl shadow-sm border border-slate-200;
+  @apply transition-all duration-300 ease-out;
+}
+
+.card-modern:hover {
+  @apply shadow-lg border-slate-300;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Loading states */
+.skeleton {
+  @apply animate-pulse bg-slate-200 rounded;
+}
+
+/* Responsive utilities */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: 0 0% 20%;
+    --foreground: 0 0% 0%;
+    --background: 0 0% 100%;
+  }
+}
+
+/* Remove default styles */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* Improved form styles */
+.form-input {
+  @apply w-full px-4 py-3 border border-slate-300 rounded-lg;
+  @apply focus:ring-2 focus:ring-slate-900 focus:border-transparent;
+  @apply transition-all duration-200;
+}
+
+/* Container improvements */
+.container-modern {
+  @apply container mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Section spacing */
+.section-padding {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+
+/* Grid improvements */
+.grid-responsive {
+  @apply grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+}
+
+/* Graffiti Text Styles */
+.graffiti-text {
+  font-family: var(--font-graffiti);
+  text-shadow:
+    3px 3px 0px rgba(0, 0, 0, 0.2),
+    4px 4px 0px rgba(0, 0, 0, 0.1);
+  transform: rotate(-2deg);
+}
+
+.street-text {
+  font-family: var(--font-street);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.urban-text {
+  font-family: var(--font-urban);
+  letter-spacing: 0.02em;
+}
+
+.tag-text {
+  font-family: var(--font-tag);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hand-text {
+  font-family: var(--font-hand);
+  transform: rotate(-1deg);
+}
+
+/* Graffiti Outline Text */
+.graffiti-outline {
+  -webkit-text-stroke: 2px black;
+  -webkit-text-fill-color: transparent;
+  text-stroke: 2px black;
+  paint-order: stroke fill;
+}
+
+.graffiti-outline-white {
+  -webkit-text-stroke: 3px white;
+  -webkit-text-fill-color: transparent;
+  text-stroke: 3px white;
+  paint-order: stroke fill;
+}
+
+/* Paint Splatter Effect */
+.paint-splatter {
+  position: relative;
+  z-index: 1;
+}
+
+.paint-splatter::before {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(var(--graffiti-pink), 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(var(--graffiti-blue), 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 40% 80%, rgba(var(--graffiti-yellow), 0.3) 0%, transparent 45%);
+  filter: blur(20px);
+  z-index: -1;
+  animation: paint-move 15s ease-in-out infinite;
+}
+
+@keyframes paint-move {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(2deg) scale(1.05); }
+  50% { transform: rotate(-1deg) scale(1.02); }
+  75% { transform: rotate(1deg) scale(1.03); }
+}
+
+/* Spray Paint Background */
+.spray-paint-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.spray-paint-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at top left, rgba(var(--graffiti-purple), 0.15) 0%, transparent 40%),
+    radial-gradient(ellipse at bottom right, rgba(var(--graffiti-orange), 0.15) 0%, transparent 40%),
+    radial-gradient(circle at center, rgba(var(--graffiti-cyan), 0.1) 0%, transparent 60%);
+  animation: spray-shift 20s ease-in-out infinite;
+}
+
+@keyframes spray-shift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-20px, 10px) rotate(1deg); }
+  66% { transform: translate(20px, -10px) rotate(-1deg); }
+}
+
+/* Drip Effect */
+.drip-effect {
+  position: relative;
+}
+
+.drip-effect::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to bottom, currentColor, transparent);
+  clip-path: polygon(
+    0% 0%, 5% 40%, 10% 0%, 15% 30%, 20% 0%,
+    25% 50%, 30% 0%, 35% 40%, 40% 0%, 45% 30%,
+    50% 0%, 55% 40%, 60% 0%, 65% 30%, 70% 0%,
+    75% 50%, 80% 0%, 85% 40%, 90% 0%, 95% 30%, 100% 0%
+  );
+}
+
+/* Sticker Effect */
+.sticker-effect {
+  position: relative;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 3px solid black;
+  border-radius: 15px;
+  transform: rotate(-5deg);
+  box-shadow:
+    4px 4px 0 black,
+    8px 8px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.sticker-effect:hover {
+  transform: rotate(-3deg) scale(1.05);
+  box-shadow:
+    6px 6px 0 black,
+    10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Wall Texture */
+.wall-texture {
+  position: relative;
+  background-color: #f5f5f5;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.02) 35px, rgba(0,0,0,.02) 70px),
+    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(0,0,0,.02) 35px, rgba(0,0,0,.02) 70px);
+}
+
+/* Graffiti Animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0) rotate(-2deg); }
+  25% { transform: translateX(-2px) rotate(-3deg); }
+  75% { transform: translateX(2px) rotate(-1deg); }
+}
+
+@keyframes pulse-neon {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 10px currentColor);
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 20px currentColor);
+  }
+}
+
+.graffiti-shake {
+  animation: shake 2s ease-in-out infinite;
+}
+
+.neon-glow {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+
+/* Tape Effect */
+.tape-effect {
+  position: relative;
+  padding: 1rem;
+}
+
+.tape-effect::before,
+.tape-effect::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 25px;
+  background: rgba(255, 255, 200, 0.8);
+  border: 1px solid rgba(200, 180, 140, 0.5);
+  transform: rotate(-5deg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tape-effect::before {
+  top: -10px;
+  left: 20px;
+  transform: rotate(-8deg);
+}
+
+.tape-effect::after {
+  bottom: -10px;
+  right: 20px;
+  transform: rotate(5deg);
+}
